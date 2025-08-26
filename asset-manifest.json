@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/sequence-game-countdown/static/css/main.f309758e.css",
-    "main.js": "/sequence-game-countdown/static/js/main.cc181d3c.js",
+    "main.js": "/sequence-game-countdown/static/js/main.82761f6d.js",
     "static/js/453.96453769.chunk.js": "/sequence-game-countdown/static/js/453.96453769.chunk.js",
     "index.html": "/sequence-game-countdown/index.html",
     "main.f309758e.css.map": "/sequence-game-countdown/static/css/main.f309758e.css.map",
-    "main.cc181d3c.js.map": "/sequence-game-countdown/static/js/main.cc181d3c.js.map",
+    "main.82761f6d.js.map": "/sequence-game-countdown/static/js/main.82761f6d.js.map",
     "453.96453769.chunk.js.map": "/sequence-game-countdown/static/js/453.96453769.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f309758e.css",
-    "static/js/main.cc181d3c.js"
+    "static/js/main.82761f6d.js"
   ]
 }
