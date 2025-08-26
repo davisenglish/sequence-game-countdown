@@ -454,7 +454,7 @@ export default function WordPuzzleGame() {
 
       {!roundStarted ? (
         <div className="flex flex-col items-center space-y-3">
-        <button onClick={handleBegin} className="bg-white border border-gray-400 text-black w-52 h-16 text-xl font-semibold rounded">BEGIN : COUNTDOWN</button>
+        <button onClick={handleBegin} className="bg-white border border-gray-400 text-black w-64 h-16 text-xl font-semibold rounded">BEGIN : COUNTDOWN</button>
           <div className="flex flex-row items-center space-x-4">
             <a href="https://davisenglish.github.io/sequence-game-home/" className="text-gray-600 hover:text-gray-800 transition-colors" title="Home">
               <FontAwesomeIcon icon={faHouseChimney} className="text-lg" />
