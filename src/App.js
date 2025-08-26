@@ -156,8 +156,8 @@ export default function WordPuzzleGame() {
     (async () => {
       setLetters(await getRandomLetters());
     })();
-    // Load stats from localStorage
-    const savedStats = localStorage.getItem('sequenceGameStats');
+    // Load stats from localStorage (unique to countdown version)
+    const savedStats = localStorage.getItem('sequenceGameCountdownStats');
     if (savedStats) {
       setStats(JSON.parse(savedStats));
     }
@@ -264,7 +264,7 @@ export default function WordPuzzleGame() {
       }
       
       setStats(newStats);
-      localStorage.setItem('sequenceGameStats', JSON.stringify(newStats));
+      localStorage.setItem('sequenceGameCountdownStats', JSON.stringify(newStats));
     }
     
     setRoundStarted(false);
@@ -336,22 +336,22 @@ export default function WordPuzzleGame() {
     }
     
     setStats(newStats);
-    localStorage.setItem('sequenceGameStats', JSON.stringify(newStats));
+    localStorage.setItem('sequenceGameCountdownStats', JSON.stringify(newStats));
     
-    // Store the current round's score for highlighting
-    localStorage.setItem('currentRoundScore', score.toString());
+    // Store the current round's score for highlighting (unique to countdown version)
+    localStorage.setItem('currentRoundCountdownScore', score.toString());
     
-    // Store the current round's fastest answer for highlighting
+    // Store the current round's fastest answer for highlighting (unique to countdown version)
     if (firstAnswerTime !== null) {
-      localStorage.setItem('currentRoundFastestAnswer', JSON.stringify({
+      localStorage.setItem('currentRoundCountdownFastestAnswer', JSON.stringify({
         time: firstAnswerTime,
         word: validWords[0]?.word || 'Unknown'
       }));
     }
     
-    // Store the current round's word count for highlighting
+    // Store the current round's word count for highlighting (unique to countdown version)
     if (validWords.length > 0) {
-      localStorage.setItem('currentRoundWordCount', validWords.length.toString());
+      localStorage.setItem('currentRoundCountdownWordCount', validWords.length.toString());
     }
   };
 
@@ -362,11 +362,11 @@ export default function WordPuzzleGame() {
   };
 
   const clearStats = () => {
-    // Clear all statistical data
-    localStorage.removeItem('sequenceGameStats');
-    localStorage.removeItem('currentRoundScore');
-    localStorage.removeItem('currentRoundFastestAnswer');
-    localStorage.removeItem('currentRoundWordCount');
+    // Clear all statistical data (unique to countdown version)
+    localStorage.removeItem('sequenceGameCountdownStats');
+    localStorage.removeItem('currentRoundCountdownScore');
+    localStorage.removeItem('currentRoundCountdownFastestAnswer');
+    localStorage.removeItem('currentRoundCountdownWordCount');
     
     // Reset stats to initial state
     setStats({
@@ -717,7 +717,7 @@ export default function WordPuzzleGame() {
               <div className="space-y-2">
                 {[1, 2, 3, 4, 5].map((position) => {
                   const score = (stats.highestScores && stats.highestScores[position - 1]) || 0;
-                  const currentRoundScore = parseInt(localStorage.getItem('currentRoundScore') || '0');
+                  const currentRoundScore = parseInt(localStorage.getItem('currentRoundCountdownScore') || '0');
                   const isCurrentRound = score === currentRoundScore && score > 0;
                   const maxScore = Math.max(...(stats.highestScores || []), 1);
                   const barWidth = score > 0 ? (score / maxScore) * 100 : 10;
@@ -751,7 +751,7 @@ export default function WordPuzzleGame() {
                 <div className="space-y-2">
                   {[1, 2, 3].map((position) => {
                     const answer = (stats.fastestAnswers && stats.fastestAnswers[position - 1]) || null;
-                    const currentRoundAnswer = JSON.parse(localStorage.getItem('currentRoundFastestAnswer') || 'null');
+                    const currentRoundAnswer = JSON.parse(localStorage.getItem('currentRoundCountdownFastestAnswer') || 'null');
                     const isCurrentRound = answer && currentRoundAnswer && 
                       answer.time === currentRoundAnswer.time && 
                       answer.word === currentRoundAnswer.word;
@@ -777,7 +777,7 @@ export default function WordPuzzleGame() {
                 <div className="space-y-2">
                   {[1, 2, 3].map((position) => {
                     const wordCount = stats.mostWords && stats.mostWords[position - 1];
-                    const currentRoundWordCount = parseInt(localStorage.getItem('currentRoundWordCount') || '0');
+                    const currentRoundWordCount = parseInt(localStorage.getItem('currentRoundCountdownWordCount') || '0');
                     const isCurrentRound = wordCount === currentRoundWordCount && wordCount > 0;
                     
                     return (
