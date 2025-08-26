@@ -556,9 +556,9 @@ export default function WordPuzzleGame() {
                 <span className="absolute inset-0 flex items-center justify-center text-green-600 font-bold animate-float-up" style={{fontSize:'12pt'}}>{letterPopup}</span>
               )}
             </div>
-            <div className={`text-sm text-gray-600 mt-2 flex justify-center items-center space-x-1 relative transition-all duration-300 ${timeLeft < LETTER_TIME_LIMIT - 10 ? 'h-0 mt-0 opacity-0 overflow-hidden' : 'h-6'}`}>
+            <div className={`text-sm text-gray-600 mt-2 flex justify-center items-center space-x-1 relative transition-all duration-300 ${gameOver || timeLeft < LETTER_TIME_LIMIT - 10 ? 'h-0 mt-0 opacity-0 overflow-hidden' : 'h-6'}`}>
               {/* Time Bonus Progress Bar */}
-              <div className={`absolute left-1/2 transform -translate-x-1/2 w-32 bg-gray-300 rounded-full h-6 opacity-60 transition-opacity duration-300 overflow-hidden ${timeLeft < LETTER_TIME_LIMIT - 10 ? 'opacity-0' : ''}`}>
+              <div className={`absolute left-1/2 transform -translate-x-1/2 w-32 bg-gray-300 rounded-full h-6 opacity-60 transition-opacity duration-300 overflow-hidden ${gameOver || timeLeft < LETTER_TIME_LIMIT - 10 ? 'opacity-0' : ''}`}>
                 <div 
                   className="h-full transition-all duration-1000 ease-linear rounded-full"
                   style={{
@@ -568,8 +568,8 @@ export default function WordPuzzleGame() {
                   }}
                 ></div>
               </div>
-              <span className={`relative z-10 transition-opacity duration-300 ${timeLeft < LETTER_TIME_LIMIT - 10 ? 'opacity-0' : ''}`}>Time Bonus</span>
-              <FontAwesomeIcon icon={faStopwatch} className={`relative z-10 transition-opacity duration-300 ${timeLeft < LETTER_TIME_LIMIT - 10 ? 'opacity-0' : ''}`} />
+              <span className={`relative z-10 transition-opacity duration-300 ${gameOver || timeLeft < LETTER_TIME_LIMIT - 10 ? 'opacity-0' : ''}`}>Time Bonus</span>
+              <FontAwesomeIcon icon={faStopwatch} className={`relative z-10 transition-opacity duration-300 ${gameOver || timeLeft < LETTER_TIME_LIMIT - 10 ? 'opacity-0' : ''}`} />
               {timePopup && (
                 <span className="absolute flex items-center justify-center text-green-600 font-bold animate-float-up" style={{fontSize:'9pt', marginLeft: '4px'}}>{timePopup}</span>
               )}
